@@ -1,0 +1,97 @@
+<!DOCTYPE html><!--informa al navegdor que version de HTML se ocupa-->
+<html lang="en"><!--se utiliza para comenzar a estructurar y el idioma-->
+<head><!--información general acerca del documento, incluyendo su título y
+    enlaces a scripts y hojas de estilos-->
+
+    <style>/*colocamos la etiqueta para añadir el estilo a la pagina web*/
+.container {/*damos estilo al contenedor*/
+    display: flex; /*ayuda a adaptar los elementos*/
+    flex-wrap: wrap;/*hace que los elementos permanezcan en una misma línea */
+    max-width: 1200px;/*el maximo de ancho que puede ocupar el contenedor*/
+    margin: auto;/*hace que los elementos se vayan mas al centro de la pagina*/
+    display: block;/*los elementos van uno debajo de otro*/
+}
+
+.card {/*hace el estilo de las cartas*/
+    width: calc(25% - 20px); /* El 20px es para el margen entre las cartas */
+    height: 160px; /* Altura de cada carta */
+    margin: 10px;/*margen de espacio entre las cartas*/
+    perspective: 1000px;/*espacio entre ejes para que este sea elemento 3d*/
+    cursor: pointer;/*estilo del cursor*/
+}
+
+.card-content {/*estilo al voltear cartas*/
+    width: 100%;/*ancho de las cartas*/
+    height: 100%;/*alto de las cartas*/
+    position: relative;/*posicion por defecto*/
+    transform-style: preserve-3d;/*ayuda que la carta pueda ser volteada*/
+    transition: transform 0.5s;/*cuanto se va a voltear la carta*/
+}
+
+.card.flipped .card-content {/*estilo para voltear*/
+    transform: rotateY(180deg);/*cuantos grados se volteara la carta*/
+}
+
+.card-face {/*cara de la carta*/
+    width: 100%;/*ancho de la carta*/
+    height: 100%;/*alto de la carta*/
+    position: absolute;/*abarca toda la pantalla*/
+    backface-visibility: hidden;/*determina si la cara posterior de un elemento es visible de frente al usuario*/
+}
+
+.card-front {/*parte que se muestra primero de la carta*/
+    background: rgb(225, 197, 238); /* color de la carta*/
+    display: flex;/*ayuda a adaptar los elementos*/
+    justify-content: center;/*contenido centrado*/
+    align-items: center;/*contenido alineado al centro*/
+    color: white;/*color de letra */
+}
+
+.card-back {/*vuelta de la carta*/
+    background: url(imgs/img8.avif);/*agregamos la imagen que deseamos para todas*/
+    transform: rotateY(180deg);/*cuantos grados volteara*/
+    display: flex;/*adapta elementos*/
+    justify-content: center;/*contenido justificado*/
+    align-items: center;/*contenido alineado al centro*/
+    color: white;/*color de letra */
+}
+    </style><!--terminamos el estilo de las cartas-->
+
+    <meta charset="UTF-8"><!--responsable de que se muestre el contenido correctamente y con caracteres-->
+ <!-- metaetiqueta mediante la que se establece si se puede hacer zoom en una página, el zoom inicial o 
+        la anchura de la pantalla del dispositivo--> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><!--se encarga de dale titulo a la pestaña de la pagina-->
+</head><!--se cierra la parte de la informacion general-->
+<body><!--colocamos el contenido de la pagina-->
+    <div class="container"><!--contenedor de las cartas-->
+    <div class="card"><!--contenedor de la primera carta-->
+        <div class="card-content"><!--contenido de la carta-->
+            <div class="card-face card-front"></div><!--cara frontal de la carta-->
+            <div class="card-face card-back">Texto 1</div><!--parte trasera de la carta-->
+        </div><!--se termina el contenedor de la carta-->
+    </div><!--se cierra en contenedor de la carta-->
+    <div class="card"><!--contenedor de lacarta-->
+        <div class="card-content"><!--contenido de la carta-->
+            <div class="card-face card-front"></div><!--cara frontal de la carta-->
+            <div class="card-face card-back">Texto 2</div><!--parte trasera de la carta-->
+        </div><!--se termina el contenedor de la carta-->
+    </div><!--se cierra en contenedor de la carta-->
+    <div class="card"><!--contenedor de lacarta-->
+        <div class="card-content"><!--contenido de la carta-->
+            <div class="card-face card-front"></div><!--cara frontal de la carta-->
+            <div class="card-face card-back">Texto 3</div><!--parte trasera de la carta-->
+        </div><!--se termina el contenedor de la carta-->
+    </div><!--se cierra en contenedor de la carta-->
+    </div><!--se termina el contenedor de todo el con tenido de cartas-->
+
+    <script>//comienza el scrip
+        var card = document.querySelectorAll('.card');//colocamos una variable para darle funcion a las cartas
+        card.forEach(function(card){//asignamos que las cartas tengan una funcion
+            card.addEventListener('click', function() {//asgnamos la funcion  parara que al dar click se den vuelta
+                card.classList.toggle('flipped');
+            });
+        });
+    </script><!--se termina el scrip-->
+</body><!--se termina lo que ira dentro de la pagina web-->
+</html><!--fin de la estructura-->
